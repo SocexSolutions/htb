@@ -1,0 +1,33 @@
+18:37:28.395387 IP 10.10.14.5.61160 > 10.10.11.35.microsoft-ds: Flags [S], seq 2481659994, win 65535, options [mss 1460,nop,wscale 6,nop,nop,TS val 3600442969 ecr 0,sackOK,eol], length 0
+18:37:28.450133 IP 10.10.11.35.microsoft-ds > 10.10.14.5.61160: Flags [S.], seq 128019491, ack 2481659995, win 65535, options [mss 1340,nop,wscale 8,sackOK,TS val 6096006 ecr 3600442969], length 0
+18:37:28.450198 IP 10.10.14.5.61160 > 10.10.11.35.microsoft-ds: Flags [.], ack 1, win 2054, options [nop,nop,TS val 3600443024 ecr 6096006], length 0
+18:37:28.453102 IP 10.10.14.5.61160 > 10.10.11.35.microsoft-ds: Flags [P.], seq 1:261, ack 1, win 2054, options [nop,nop,TS val 3600443027 ecr 6096006], length 260
+18:37:28.512771 IP 10.10.11.35.microsoft-ds > 10.10.14.5.61160: Flags [P.], seq 1:329, ack 261, win 8195, options [nop,nop,TS val 6096068 ecr 3600443027], length 328
+18:37:28.512873 IP 10.10.14.5.61160 > 10.10.11.35.microsoft-ds: Flags [.], ack 329, win 2049, options [nop,nop,TS val 3600443086 ecr 6096068], length 0
+18:37:28.519949 IP 10.10.14.5.61160 > 10.10.11.35.microsoft-ds: Flags [P.], seq 261:427, ack 329, win 2049, options [nop,nop,TS val 3600443093 ecr 6096068], length 166
+18:37:28.576063 IP 10.10.11.35.microsoft-ds > 10.10.14.5.61160: Flags [P.], seq 329:650, ack 427, win 8194, options [nop,nop,TS val 6096132 ecr 3600443093], length 321
+18:37:28.576155 IP 10.10.14.5.61160 > 10.10.11.35.microsoft-ds: Flags [.], ack 650, win 2044, options [nop,nop,TS val 3600443150 ecr 6096132], length 0
+18:37:33.414982 IP 10.10.14.5.61160 > 10.10.11.35.microsoft-ds: Flags [P.], seq 427:1041, ack 650, win 2048, options [nop,nop,TS val 3600447988 ecr 6096132], length 614
+18:37:33.475102 IP 10.10.11.35.microsoft-ds > 10.10.14.5.61160: Flags [P.], seq 650:735, ack 1041, win 8192, options [nop,nop,TS val 6101029 ecr 3600447988], length 85
+18:37:33.475247 IP 10.10.14.5.61160 > 10.10.11.35.microsoft-ds: Flags [.], ack 735, win 2046, options [nop,nop,TS val 3600448049 ecr 6101029], length 0
+18:37:33.475582 IP 10.10.14.5.61160 > 10.10.11.35.microsoft-ds: Flags [P.], seq 1041:1153, ack 735, win 2048, options [nop,nop,TS val 3600448049 ecr 6101029], length 112
+18:37:33.530144 IP 10.10.11.35.microsoft-ds > 10.10.14.5.61160: Flags [P.], seq 735:819, ack 1153, win 8191, options [nop,nop,TS val 6101086 ecr 3600448049], length 84
+18:37:33.530297 IP 10.10.14.5.61160 > 10.10.11.35.microsoft-ds: Flags [.], ack 819, win 2046, options [nop,nop,TS val 3600448104 ecr 6101086], length 0
+18:37:33.535079 IP 10.10.14.5.61160 > 10.10.11.35.microsoft-ds: Flags [P.], seq 1153:1289, ack 819, win 2048, options [nop,nop,TS val 3600448108 ecr 6101086], length 136
+18:37:33.591350 IP 10.10.11.35.microsoft-ds > 10.10.14.5.61160: Flags [P.], seq 819:975, ack 1289, win 8191, options [nop,nop,TS val 6101146 ecr 3600448108], length 156
+18:37:33.591440 IP 10.10.14.5.61160 > 10.10.11.35.microsoft-ds: Flags [.], ack 975, win 2045, options [nop,nop,TS val 3600448165 ecr 6101146], length 0
+18:37:33.596586 IP 10.10.14.5.61160 > 10.10.11.35.microsoft-ds: Flags [P.], seq 1289:1529, ack 975, win 2048, options [nop,nop,TS val 3600448170 ecr 6101146], length 240
+18:37:33.655478 IP 10.10.11.35.microsoft-ds > 10.10.14.5.61160: Flags [P.], seq 975:1183, ack 1529, win 8196, options [nop,nop,TS val 6101211 ecr 3600448170], length 208
+18:37:33.655579 IP 10.10.14.5.61160 > 10.10.11.35.microsoft-ds: Flags [.], ack 1183, win 2044, options [nop,nop,TS val 3600448229 ecr 6101211], length 0
+18:37:33.660998 IP 10.10.14.5.61160 > 10.10.11.35.microsoft-ds: Flags [P.], seq 1529:1749, ack 1183, win 2048, options [nop,nop,TS val 3600448234 ecr 6101211], length 220
+18:37:33.717660 IP 10.10.11.35.microsoft-ds > 10.10.14.5.61160: Flags [P.], seq 1183:1871, ack 1749, win 8195, options [nop,nop,TS val 6101272 ecr 3600448234], length 688
+18:37:33.717775 IP 10.10.14.5.61160 > 10.10.11.35.microsoft-ds: Flags [.], ack 1871, win 2037, options [nop,nop,TS val 3600448291 ecr 6101272], length 0
+18:37:33.718346 IP 10.10.14.5.61160 > 10.10.11.35.microsoft-ds: Flags [P.], seq 1749:1841, ack 1871, win 2048, options [nop,nop,TS val 3600448291 ecr 6101272], length 92
+18:37:33.778509 IP 10.10.11.35.microsoft-ds > 10.10.14.5.61160: Flags [P.], seq 1871:1999, ack 1841, win 8195, options [nop,nop,TS val 6101333 ecr 3600448291], length 128
+18:37:33.778641 IP 10.10.14.5.61160 > 10.10.11.35.microsoft-ds: Flags [.], ack 1999, win 2046, options [nop,nop,TS val 3600448352 ecr 6101333], length 0
+18:37:33.779061 IP 10.10.14.5.61160 > 10.10.11.35.microsoft-ds: Flags [P.], seq 1841:1913, ack 1999, win 2048, options [nop,nop,TS val 3600448352 ecr 6101333], length 72
+18:37:33.835850 IP 10.10.11.35.microsoft-ds > 10.10.14.5.61160: Flags [P.], seq 1999:2071, ack 1913, win 8194, options [nop,nop,TS val 6101390 ecr 3600448352], length 72
+18:37:33.835906 IP 10.10.14.5.61160 > 10.10.11.35.microsoft-ds: Flags [.], ack 2071, win 2046, options [nop,nop,TS val 3600448408 ecr 6101390], length 0
+18:37:33.836753 IP 10.10.14.5.61160 > 10.10.11.35.microsoft-ds: Flags [F.], seq 1913, ack 2071, win 2048, options [nop,nop,TS val 3600448410 ecr 6101390], length 0
+18:37:33.895768 IP 10.10.11.35.microsoft-ds > 10.10.14.5.61160: Flags [.], ack 1914, win 8194, options [nop,nop,TS val 6101452 ecr 3600448410], length 0
+18:37:33.896040 IP 10.10.11.35.microsoft-ds > 10.10.14.5.61160: Flags [R.], seq 2071, ack 1914, win 0, length 0
