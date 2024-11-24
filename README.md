@@ -26,8 +26,8 @@ brew install hydra           # HTTP-based password cracking tool
 You will need the rockyou wordlist for password cracking and user enumeration.
 
 ```bash
-curl -O https://raw.githubusercontent.com/brannondorsey/naive-hashcat/master/rockyou.txt
-mv rockyou.txt resources/rockyou.txt
+mkdir -p data
+curl -o data/rockyou.txt https://raw.githubusercontent.com/brannondorsey/naive-hashcat/master/rockyou.txt
 ```
 
 For windows exploitation the following tools are useful:
@@ -57,7 +57,7 @@ msfdb init
 Python scripts are also used. We use pyenv to manage the python versions.
 
 ```bash
-brew install pyenv           # Python version manager
+brew install pyenv-virtualenv       # Python version manager
 ```
 
 For sql injection the following tools are useful:
