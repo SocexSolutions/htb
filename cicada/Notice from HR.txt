@@ -21,3 +21,5 @@ Thank you for your attention to this matter, and once again, welcome to the Cica
 
 Best regards,
 Cicada Corp
+
+smbclient //10.10.11.35/HR -U "michael.wrightson" --password="Cicada\$M6Corpb*@Lp#nZp!8"

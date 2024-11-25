@@ -1,10 +1,7 @@
-administrator
-admin
-david
-sarah
 david.orelious
 sarah.dantelia
-d.orelious
-s.dantelia
-dorelious
-sdantelia
+john.smoulder
+michael.wrightson
+Dev Support
+emily.oscars
+krbtgt

